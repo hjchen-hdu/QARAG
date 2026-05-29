@@ -1,0 +1,41 @@
+task: 'retriever'
+
+env:
+  num_threads: 16
+  seed: 42
+
+dataset:
+  name: 'cwq'
+  text_encoder_name: 'gte-large-en-v1.5'
+
+retriever:
+  topic_pe: true
+  use_structure_encoder: true
+  use_semantic_encoder: true
+  use_relation_query_sim: true
+  use_triple_query_sim: true
+  DDE_kwargs:
+    num_rounds: 2
+    num_reverse_rounds: 2
+
+optimizer:
+  lr: 1e-3
+
+eval:
+  k_list: '100'
+
+weak_supervision:
+  # FIXED(QARAG): Use query-relation path matching to convert answer-connected
+  # shortest paths into soft triple labels.
+  # TODO(QARAG): Try near_shortest_delta=1 and path diversity after baseline.
+  strategy: 'query_path_soft'
+  near_shortest_delta: 0
+  top_m_paths: 10
+  max_paths_per_pair: 50
+  negative_confidence: 0.05
+  score_temperature: 1.0
+
+train:
+  num_epochs: 10000
+  patience: 10
+  save_prefix: 'cwq'

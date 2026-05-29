@@ -1,0 +1,62 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments
+.env
+.venv/
+venv/
+env/
+
+# Sensitive local configuration
+settings.json
+credentials.json
+*.pem
+*.key
+*_secret*
+*_token*
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Experiment tracking and outputs
+wandb/
+outputs/
+logs/
+runs/
+
+# Retriever generated artifacts
+retrieve/wandb/
+retrieve/outputs/
+retrieve/logs/
+retrieve/runs/
+retrieve/webqsp_*/
+retrieve/cwq_*/
+retrieve/smoke_*/
+retrieve/data_files/*/processed/
+retrieve/data_files/*/emb/
+retrieve/data_files/*/triple_scores/
+retrieve/data_files/*/gpt_triples.pth
+
+# Reasoner generated artifacts
+reason/results/
+reason/gpt_labeled/
+reason/scored_triples/
+
+# Model checkpoints and binary experiment outputs
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.jsonl
